@@ -309,7 +309,10 @@ def poll():
 
             if newstate != oldstate:
                 logging.debug("Pin %d changed from %d to %d" % (pin, oldstate, newstate))
-                mqttc.publish(MQTT_TOPIC_OUT % pin, payload=newstate, qos=MQTT_QOS, retain=MQTT_RETAIN)
+                if newstate == 1:
+                    mqttc.publish(MQTT_TOPIC_OUT % pin, payload='Open', qos=MQTT_QOS, retain=MQTT_RETAIN)
+                elif newstate == 0:
+                    mqttc.publish(MQTT_TOPIC_OUT % pin, payload='Closed', qos=MQTT_QOS, retain=MQTT_RETAIN)
                 PINS[index][1] = newstate
 
         time.sleep(MONITOR_POLL)
