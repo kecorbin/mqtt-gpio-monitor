@@ -40,7 +40,7 @@ MQTT_QOS = config.getint("global", "mqtt_qos")
 MQTT_RETAIN = config.getboolean("global", "mqtt_retain")
 MQTT_CLEAN_SESSION = config.getboolean("global", "mqtt_clean_session")
 MQTT_LWT = config.get("global", "mqtt_lwt")
-
+GPIO_PUD = config.get("global", "pull_up_down")
 MONITOR_PINS = config.get("global", "monitor_pins")
 MONITOR_POLL = config.getfloat("global", "monitor_poll")
 MONITOR_REFRESH = config.get("global", "monitor_refresh")
@@ -269,7 +269,7 @@ def init_gpio():
         pin = PINS[index][0]
 
         logging.debug("Initialising GPIO input pin %d..." % (pin))
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO_PUD)
 
 
 def refresh():
