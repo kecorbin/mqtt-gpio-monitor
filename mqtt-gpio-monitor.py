@@ -299,7 +299,7 @@ def poll():
             index = [y[0] for y in PINS].index(PIN[0])
             pin = PINS[index][0]
             oldstate = PINS[index][1]
-
+            logging.debug("oldstate: {}".format(oldstate))
             if PFIO_MODULE:
                 newstate = PFIO.digital_read(pin)
             
