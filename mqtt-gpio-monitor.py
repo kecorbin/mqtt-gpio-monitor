@@ -304,8 +304,7 @@ def poll():
             
             if GPIO_MODULE:
                 newstate = GPIO.input(pin)
-            logging.debug('Old State: {} New State: {}'.format(oldstate, newstate))
-
+            time.sleep(0.5)
             if newstate != oldstate:
                 logging.debug("Pin %d changed from %d to %d" % (pin, oldstate, newstate))
                 if newstate == 1:
