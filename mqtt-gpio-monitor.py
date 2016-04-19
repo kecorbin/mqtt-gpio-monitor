@@ -268,7 +268,7 @@ def init_gpio():
         pin = PINS[index][0]
 
         logging.debug("Initialising GPIO input pin %d..." % (pin))
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
 def refresh():
